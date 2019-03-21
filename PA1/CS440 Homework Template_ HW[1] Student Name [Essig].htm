@@ -1,0 +1,270 @@
+
+<html>
+	<head>
+		<title> 
+			CS440 Homework Template: HW[1] Student Name [Essig]]  
+		</title>
+		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+		<style>
+		<!--
+			body{
+				font-family: 'Trebuchet MS', Verdana;
+			}
+			p.q{
+    			font-style: italic;
+			}
+			li.q{
+				font-style: italic;
+			}
+			p{
+				font-family: 'Trebuchet MS', Times;
+				margin: 10px 10px 15px 20px;
+			}
+			h3{
+				margin: 5px;
+			}
+			h2{
+				margin: 10px;
+			}
+			h1{
+				margin: 10px 0px 0px 20px;
+			}
+			div.main-body{
+				align:center;
+				margin: 30px;
+			}
+			hr{
+				margin:20px 0px 20px 0px;
+			}
+		-->
+		</style>
+	</head>
+
+<body>
+    <center>
+        <a href="http://www.bu.edu"><img border="0" src="http://www.cs.bu.edu/fac/betke/images/bu-logo.gif" width="119" height="120"></a>
+    </center>
+
+    <h1>Assignment Title</h1>
+    <p>
+        CS 440/640 Programming assignment 1 <br>
+        Normandie Essig <br>
+        Robin Rhodes <br>
+        4/6/18
+    </p>
+
+    <div class="main-body">
+        <hr>
+        <h2> Problem Definition </h2>
+        <p class="q">
+            Give a concise description of current problem.  What needs to be solved?  Why is the result useful?  Do you make any assumptions? What are the anticipated difficulties?
+        </p>
+        <p>
+            Given a skeleton code for neural networks and two sets of 2D data (linear and nonlinear), we are supposed to implement a hidden layer and 5-fold round-robin cross validation. <br>
+
+            Difficulties will most likely involve editing the fit function to account for a hidden layer within the backpropagation step. In addition, separating the data so we can test and train with different subsets will be challenging.<br>
+
+            We will also have the challenge of making sure no overfitting occurs within our training of the network.
+
+        </p>
+
+        <hr>
+        <h2> Method and Implementation </h2>
+        <p class="q">
+            Give a concise description of the implemented method. For example, you might describe the motivation of your idea, the algorithmic steps of your methods, or the mathematical formulation of your method.<br>
+        
+            Briefly outline the functions you created in your code to carry out the algorithmic steps you described earlier.
+        </p>
+        <p>
+        In this project, we are given the basic skeleton code to implement a neural network using logistic regression and do some data analytics. The functions given are : compute_cost(self,X,y), predict(self,X), fit(self,X,y,num_epochs,alpha=0.01), and plot_decision_boundary(model, X, y). We are also given code to compute the accuracy and a corresponding confusion matrix.
+        
+        We then have to implement a 5 fold round-robin cross-validation and a hidden layer to train the data. To implement the 5-fold round robin cross validation, we created a loop that would split our data into training data and testing data. We then used those new sets to train our neural network. To train the network, we updated the skeleton fit function and added a hidden layer dimensions to the overall class. The fit function now follows these basic steps:
+            <ul>
+                <li>Forward propagation: compute the output from the input value</li>
+                <li> Backward propagation: compute the partial derivative of the cost function with respect to every weight and bias</li>
+                <li>Compute gradients</li>
+                <li>Update gradient descent parameter: update theta and bias in the neural network</li>
+            </ul>
+  
+        The best neural network will have the smallest error in regard to the expected output.
+        </p>
+
+        <hr>
+        <h2>Experiments</h2>
+        <p class="q">
+            Describe your experiments, including the number of tests that you performed, and the relevant parameter values.  <br >
+            Define your evaluation metrics, e.g., detection rates, accuracy, running time.
+            
+        </p>
+        <p>
+        As we had both linear and non- linear data, we split up our experiments into those two categories. Within those, we did 5 experiments each with a different set for training and testing each time.
+        
+        This resulted in a total of 10 datasets that were trained and tested. We tested our data’s accuracy and put the results in a confusion matrix. The accuracy represented how accurate the system was and we often got an accuracy rate of 98% or higher. In addition, the confusion matrix showed the amount of true positives, false positives, true negatives, and false negatives. By having the majority TP and TN, we can interpret that our system is good.
+        
+        The running time of our experiments is dependent on all of its different parts. Within the cross_validate function we have a loop that runs 5 times, but within that loop we call many other functions and calls. Our main function to train the network is a loop dependent on the number of epochs. Within the accuracy function, there is a for loop going through the y prediction vector and in the fit function, a for loop going through the length of the width of X.
+        </p>
+        
+        <hr>
+        <h2> Results</h2>
+        <p class= "q">
+            List your experimental results.  Provide examples of input images and output images. If relevant, you may provide images showing any intermediate steps.  If your work involves videos, do not submit the videos but only links to them.
+            </p>
+
+        <p>
+
+        	<table>
+                <tr><td colspan=3><center><h3>Results:Linear</h3></center></td></tr>
+                <tr>
+                <td> Trial </td><td> Source Image </td> <td> Result Image</td>
+                </tr>
+                <tr>
+                    <td> trial 1 </td>
+                    <td> <img src="source1_L.png"> </td>
+                    <td> <img src="result1_L.png"> </td>
+                </tr>
+                <tr>
+                    <td> trial 2 </td>
+                    <td> <img src="source2_L.png"> </td>
+                    <td> <img src="result2_L.png"> </td>
+                </tr>
+                <tr>
+                    <td> trial 3 </td>
+                    <td> <img src="source3_L.png"> </td>
+                    <td> <img src="result3_L.png"> </td>
+                </tr>
+                <tr>
+                    <td> trial 4 </td>
+                    <td> <img src="source4_L.png"> </td>
+                    <td> <img src="result4_L.png"> </td>
+                </tr>
+                <tr>
+                    <td> trial 5 </td>
+                    <td> <img src="source5_L.png"> </td>
+                    <td> <img src="result5_L.png"> </td>
+                </tr>
+            </table>
+            <table>
+                <tr><td colspan=3><center><h3>Results:Non-Linear</h3></center></td></tr>
+                <tr>
+                <td> Trial </td><td> Source Image </td> <td> Result Image</td>
+                </tr>
+                <tr>
+                    <td> trial 1 </td>
+                    <td> <img src="source1_NL.png"> </td>
+                    <td> <img src="result1_NL.png"> </td>
+                </tr>
+                <tr>
+                    <td> trial 2 </td>
+                    <td> <img src="source2_NL.png"> </td>
+                    <td> <img src="result2_NL.png"> </td>
+                </tr>
+                <tr>
+                    <td> trial 3 </td>
+                    <td> <img src="source3_NL.png"> </td>
+                    <td> <img src="result3_NL.png"> </td>
+                </tr>
+                <tr>
+                    <td> trial 4 </td>
+                    <td> <img src="source4_NL.png"> </td>
+                    <td> <img src="result4_NL.png"> </td>
+                </tr>
+                <tr>
+                    <td> trial 5 </td>
+                    <td> <img src="source5_NL.png"> </td>
+                    <td> <img src="result5_NL.png"> </td>
+                </tr>
+            </table>
+
+        </p>
+
+
+
+		<hr>
+	<h2> Discussion </h2>
+
+	<p class= "q">
+		Discuss your method and results:
+		<ul>
+    		<li>What are the strengths and weaknesses of your method? </li>
+    		<li>Do your results show that your method is generally successful or are there limitations? Describe what you expected to find in your experiments, and how that differed or was confirmed by your results. </li>
+    		<li>Potential future work. How could your method be improved? What would you try (if you had more time) to overcome the failures/limitations of your work?</li>
+		</ul>
+	</p>
+	<p> 
+		Our method resulted in our expected outcome and was generated fairly fast. Though it could possibly be more accurate. Using cross validation was a very big strength, in terms of making sure the model wasn’t too over/under fitted. <br>
+
+		Our method could of been improved by having more data to train with, but overall still did very well with the data amount we had. If we had more time, we could have tried many different values for the learning rate to see if we could increase performance that way.
+
+	</p>
+
+	<hr>
+	<h2> Conclusions </h2>
+
+	<p class="q">
+		Based on your discussion, what are your conclusions?  What is your main message?
+	</p>
+	<p> 
+		A accuracy of rate of 100 is very hard to reach, but our results consistently had a rate of 98-99% showing that our network trained well.  <br> 
+		For how many complex problems there are solved with Neural Nets, building one, even a slightly more complex one than this, is very straightforward.
+
+	</p>
+
+
+
+	<hr>
+	<h2> Credits and Bibliography </h2>
+	<p class="q ">
+		Cite any papers or other references you consulted while developing your solution.  Citations to papers should include the authors, the year of publication, the title of the work, and the publication information (e.g., book name and publisher; conference proceedings and location; journal name, volume and pages; technical report and institution).
+		<br>
+		Material on the web should include the url and date of access.
+		<br>
+		Credit any joint work or discussions with your classmates.
+	</p>
+	<p> 
+		In completing this assignment, we consulted class notes, piazza questions and answers, and attended office hours. 
+	</p>
+
+	<hr>
+
+	<h2> Handout Questions </h2>
+	<p class="q ">
+		<ol>
+    		<li class="q">Train your neural network with the provided linear and non-linear dataset (DATA/data_linear, DATA/data_nonLinear) respectively and evaluate your trained model by a 5-fold round robin cross-validation, i.e. separate the whole dataset into 5 parts, pick one of them as your test set, and the rest as your training set. Repeat this procedure 5 times, but each time with a different test set. To evaluate your learning system, you will need to calculate a confusion matrix. The cross validation procedure enables you to combine the results of five experiments. Why is this useful? (15pts) </li>
+
+    		<li class="q">What effect does the learning rate have on how your neural network is trained? Illustrate your answer by training your model using different learning rates. Use a script to generate output statistics and visualize them. (5pts)</li>
+
+    		<li class="q">What is overfitting and why does it occur in practice? Name and briefly explain 3 ways to reduce overfitting. (5pts)</li>
+    		<li class="q"> One common technique used to reduce overfitting is L2 regularization. How does L2 regularization prevent overfitting? Implement L2 regularization. How differently does your model perform before and after implementing L2 regularization?(5pts)</li>
+		</ol>
+		</p>
+	<p> 
+		<ol>
+    		<li>This is useful as we can then see how using different training sets lead to the best results. We can also make sure we don’t overfit a particular set of data and make it too sensitive to specific training data “traits” and also don’t have a hard time generalizing our system to be responsive to other data. In addition, it creates a more-balanced system. 
+    		We implemented this by the function cross_validate(). 
+	 		</li>
+
+    		<li>The learning rate controls how much weights are adjusted in a network with respect to the loss gradient. It determines how fast the neural network is willing to disregard previously-made assessments. In this implementation, the learning rate is implemented by the term alpha. We tested the learning rates of  0.01,  0.001, and 0.05. Using a low learning rate means that we do not miss any local minima, but it could also lead to longer run times as training time would be longer. 
+
+			In deciding a learning rate, it is important to find one that is small enough to not miss any minima but to also have it be fast enough to train the data. 
+
+			</li>
+
+    		<li>Overfitting basically means that it works well with the training data, but can't generalize well to unseen data or the whole dataset. This can be detected by having separate training sets and testing sets so that we can train with one and the see how it does during testing. 
+			Three  ways of reducing overfitting are : 
+			<ul>
+				<li>L2 regularization: uses a penalty term which encourages the sum of the squares of the parameters to be small. </li>
+				<li>Cross validation: helps tran the system with more varying data so that it can work for unexpected data sets</li>
+				<li> Dropout: assigns probabilities to each input/hidden layer unit. These numbers give the probabilities of a unit being ignored during training. Makes weights become more equal/even </li>
+			</ul>
+			</li>
+    		<li> It minimizes sum of square error by adding: <img src="function.png"> loss function; In addition, it also reduces coefficients to close to zero, which lessens importance of less impactful attributes. </li>
+		</ol>
+	</p>
+
+	<hr>
+    </div>
+</body>
+
+
+
+</html>
